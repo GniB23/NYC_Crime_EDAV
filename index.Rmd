@@ -1,6 +1,6 @@
 --- 
 title: "EDAV on NYC Crimes"
-author: "Ying B, Gaoge Liu, Hang Luo"
+author: "Ying Bi, Gaoge Liu, Hang Luo"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
