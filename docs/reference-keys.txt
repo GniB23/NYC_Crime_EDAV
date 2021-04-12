@@ -2,8 +2,8 @@ introduction
 data-sources
 data-transformation
 missing-values
-results
+chapter-5
+general-picture-of-crimes-in-new-york-state
 interactive-component
 new-york-state-county-level-map
 conclusion
-missing-values-1

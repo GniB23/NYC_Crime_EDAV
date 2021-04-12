@@ -1,1 +1,133 @@
-# Results
+# Chapter 5
+## General Picture of Crimes In New York State
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library("tidyverse")
+library("dplyr")
+library(ggplot2)
+
+```
+
+How many crimes have taken placed in New York? What types of crimes happended most times in recent years? And are there differences of crimes happened in cities and non-cities? Here are the general results of these questions. 
+
+```{r include=FALSE}
+crime_index <- readr::read_csv("Index_Crimes_by_County_and_Agency__Beginning_1990.csv") %>% 
+  filter(Year > 2016) %>% 
+  filter(Agency == "County Total")
+
+  Non.New.York.City <- crime_index %>% filter(Region == "Non-New York City") %>%
+    select("Index Total","Violent Total","Property Total","Murder","Rape","Robbery"
+           ,"Aggravated Assault", "Burglary", "Larceny", "Motor Vehicle Theft") %>%
+    colSums()
+  New.York.City <- crime_index %>% filter(Region == "New York City") %>% 
+    select("Index Total","Violent Total","Property Total","Murder","Rape","Robbery"
+           ,"Aggravated Assault", "Burglary", "Larceny", "Motor Vehicle Theft") %>%
+    colSums()
+  crime_sum <- rbind(Non.New.York.City,New.York.City)
+
+crime_sum <- as.data.frame(as.table(crime_sum))
+names(crime_sum) <- c("Region","Category","Sum")
+
+```
+
+```{r}
+ggplot(data = crime_sum[3:6,], mapping = aes(x = Category, y = Sum, fill = Region)) +
+  geom_col() +
+  labs(
+    title = "5.1.1(a) Crimes in recent 3 years",
+    x = "Type of crime",
+    y = "Number of crimes"
+    
+  )
+
+ggplot(data = crime_sum[7:14,], mapping = aes(x = Category, y = Sum, fill = Region)) +
+  geom_col() +
+  labs(
+    title = "5.1.1(b) Violent Crimes in recent 3 years",
+    x = "Type of crime",
+    y = "Number of crimes"
+    
+  )
+
+ggplot(data = crime_sum[15:20,], mapping = aes(x = Category, y = Sum, fill = Region)) +
+  geom_col() +
+  labs(
+    title = "5.1.1(c) Property Crimes in recent 3 years",
+    x = "Type of crime",
+    y = "Number of crimes"
+    
+  )
+
+
+```
+
+Crimes are classified into two broad categories: violent crimes and property crimes. Then violent crimes include Murder, Rape, Robbery and Aggravated Assault, while property crimes include Burglary, Larceny and Motor Vehicle Theft. We also divided crime by the reigion: city or non-city. And the data are the sum of the data in 2017-2019.
+From plot 5.1.1(a), we can discover that most crimes are property crimes, which takes up over 80% of the total crimes. Nearly half of the property crimes happened in cities, while almost 3/4 of the violent crimes happened in cities.
+Then we look into the specific types of crimes in New York. For violent crimes, the amounts of Murder, Rape, Robbery and Aggravated Assault increase in sequence and most happened in the cities. So for the people live in the cities, they should take care of being violated by these crimes. For property crimes, Larceny happened the most, which takes up 80% of the property crimes. And there are little differences between cities and non-cities.
+
+```{r}
+crime_distribution <- crime_index %>% 
+  filter(Agency == "County Total") %>%
+  select("County","Index Total","Year") %>% 
+  group_by(County) %>% 
+  summarise(IndexTotal = sum(`Index Total`))
+ggplot(
+  data = crime_distribution,
+  mapping = aes(
+    x = `IndexTotal`
+  )) + 
+  geom_density(alpha = 0.5, color = "red", size = 1) +
+  labs(
+    title = "5.1.2 Distribution of crime",
+    x = "Number of crimes",
+    y = "Density",
+    color = "red")
+
+```
+
+To show a general distribution of the crimes, we plot the density of counties by the number of crimes in plot 5.1.2. The x-axis is interval of number of crimes, while y-axis show the normalized ratio of counties in this interval. We can discover most counties has a low crime rate, while the counties of which total crimes in 3 yrs > 20,000 are the minority.
+
+```{r include=FALSE}
+crime_year_county <- readr::read_csv("Index_Crimes_by_County_and_Agency__Beginning_1990.csv") %>% 
+  filter(Agency == "County Total") %>% 
+  select(County,Year,`Index Total`)
+names(crime_year_county) <- c("County", "Year", "CrimeNum")
+```
+
+```{r fig.height = 7}
+ggplot(crime_year_county, aes(Year, County, fill = CrimeNum)) +
+  geom_tile() +
+  scale_fill_gradient(low="white", high="blue")
+
+```
+
+To show a general trend of crimes amount, we plot this heatmap of crimes in 5.1.3. In this general part, we used the origin data from the dataset. And we can see that the counties with high crimes amount showed in 5.1.2 has the trend that total crimes decreased every year. 
+
+```{r} 
+# This part is to output data for chapter 6
+crime_county <- crime_index %>% 
+  filter(Agency == "County Total") %>%
+  select("County","Index Total","Violent Total","Property Total","Murder","Rape","Robbery"
+           ,"Aggravated Assault", "Burglary", "Larceny", "Motor Vehicle Theft") %>% 
+  group_by(County) %>% 
+    summarise(
+      IndexTotal = sum(`Index Total`),
+      ViolentTotal = sum(`Violent Total`),
+      PropertyTotal = sum(`Property Total`),
+      Murder = sum(Murder),
+      Rape = sum(Rape),
+      Robbery = sum(Robbery),
+      AggravatedAssault = sum(`Aggravated Assault`),
+      Burglary = sum(Burglary),
+      Larceny = sum(Larceny),
+      MotorVehicleTheft = sum(`Motor Vehicle Theft`)
+    )
+write.csv(crime_county, file = "CRIME_COUNTY.csv")
+```
+
+
+
+
+
+
