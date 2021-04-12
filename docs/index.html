@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>YOUR TITLE HERE</title>
-  <meta name="description" content="YOUR TITLE HERE" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <title>EDAV on NY Crimes</title>
+  <meta name="description" content="EDAV on NY Crimes" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="YOUR TITLE HERE" />
+  <meta property="og:title" content="EDAV on NY Crimes" />
   <meta property="og:type" content="book" />
   
   
@@ -16,15 +16,15 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="YOUR TITLE HERE" />
+  <meta name="twitter:title" content="EDAV on NY Crimes" />
   
   
   
 
-<meta name="author" content="YOUR NAMES HERE" />
+<meta name="author" content="Ying Bi, Gaoge Liu, Hang Luo" />
 
 
-<meta name="date" content="2020-11-09" />
+<meta name="date" content="2021-04-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,6 @@
   
 
 <link rel="next" href="data-sources.html"/>
-<script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -68,7 +67,7 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">SHORT TITLE HERE</a></li>
+<li><a href="./">NY Crime</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
@@ -76,7 +75,9 @@
 <li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a></li>
 <li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a></li>
 <li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a></li>
-<li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
+<li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a><ul>
+<li class="chapter" data-level="6.1" data-path="interactive-component.html"><a href="interactive-component.html#new-york-state-county-level-map"><i class="fa fa-check"></i><b>6.1</b> New York State County-level Map</a></li>
+</ul></li>
 <li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -89,7 +90,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">YOUR TITLE HERE</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">EDAV on NY Crimes</a>
           </h1>
         </div>
 
@@ -98,12 +99,20 @@
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">YOUR TITLE HERE</h1>
-<p class="author"><em>YOUR NAMES HERE</em></p>
-<p class="date"><em>2020-11-09</em></p>
+<h1 class="title">EDAV on NY Crimes</h1>
+<p class="author"><em>Ying Bi, Gaoge Liu, Hang Luo</em></p>
+<p class="date"><em>2021-04-12</em></p>
 </div>
-<div id="introduction" class="section level1" number="1">
+<div id="introduction" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
+<p>We are fortunate to live in today’s era, enjoying freedom and peace. However, for a harmonious society, crime is an eternal stumbling block. Therefore, controlling crime is particularly important. Modern crimes can be roughly divided into two categories, violent crimes and property crimes. The former includes murder, rape and other vicious acts, while the latter is often related to money. Both types of crimes have a bad influence on the stability of society. For example, according to a recent report in the New York Times，an estimated 45,000 Americans are behind bars for thefts of less than $10,000 while the punishment doesn’t fit the crime. Not to mention violent crimes, once they happen, they are likely to bring devastating blows to individuals or families that can affect a lifetime.</p>
+<p>2020 was an unfortunate year for the whole world. In a relatively turbulent social environment, we should pay more attention to crime and make our contribution to reducing and preventing crime.This is why we are interested in crime topics. After learning this course, we have the ability to explore the laws and characteristics of data through visualization. Considering that the national data volume is too large, in order to draw more detailed conclusions, we decided to focus on the state of New York where Columbia University is located. We found the criminal record statistics of various counties and police agencies in New York State since 1990, including violent crimes(murder, rape, robbery, etc) and property crimes(burglary, vehicle theft, etc). We hope to explore the law of crime in New York State through visual analysis of this data set, and provide our insights and suggestions.</p>
+<p>In order to achieve our goal, we set up the following three questions：</p>
+<p>1）In recent years, what is the distribution of the total number of crimes of different categories and subcategories? Which crime is the most common in number?</p>
+<p>2）In recent years, how has the total number of crimes been geographically distributed? Are there any counties with high crime rates that are far ahead?</p>
+<p>3）Extending the time frame to 30 years, how has the number of crimes in New York State changed during these 30 years? Is there a consistent trend?</p>
+<p>It is worth noting that because the data set has a large range of missing values in ‘month’, and we have realized some of the limitations of the data set in the process of working, our above three questions are changed compared with those submitted during datacheck. Nevertheless, we still believe that the answers to the above three questions can help us better understand the crime situation in New York State.</p>
+<p>In the following content, we will introduce the source of the dataset, the data pre-processing process, the plots drawn to answer the above three questions, and the analysis of our results.</p>
 
 </div>
             </section>
@@ -143,7 +152,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/YOUR GITHUB USERNAME/YOUR REPO NAME/edit/main/index.Rmd",
+"link": "https://github.com/GniB23/NY_Crime_EDAV/edit/main/index.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -151,7 +160,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/YOUR GITHUB USERNAME/YOUR REPO NAME/blob/main/index.Rmd",
+"link": "https://github.com/GniB23/NY_Crime_EDAV/blob/main/index.Rmd",
 "text": null
 },
 "download": null,
