@@ -12,7 +12,7 @@ First we can see the missing values in "Index_Crimes_by_County_and_Agency__Begin
 ```{r, echo = TRUE}
 dataset <- read.csv("Index_Crimes_by_County_and_Agency__Beginning_1990.csv")
 any(is.na(dataset))
-colSums(is.na(dataset)) %>% sort(decreasing = TRUE) 
+colSums(is.na(dataset)) %>% sort(decreasing = TRUE)  
 ```
 
 Now we use Visna function to analyze patterns of the missing values:
