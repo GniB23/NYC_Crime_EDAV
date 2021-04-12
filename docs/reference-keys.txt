@@ -5,6 +5,7 @@ missing-values
 results
 general-picture-of-crimes-in-new-york-state
 crime-counts-across-the-counties
+trends-of-crimes-over-30-years
 interactive-component
 new-york-state-county-level-map
 conclusion

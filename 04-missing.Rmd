@@ -46,4 +46,4 @@ tidy_dataset <- read.csv("Tidydata_Crime.csv")
 any(is.na(tidy_dataset$Index.Total))
 ```
 
-Now we can analize our preprocessed dataset "Tidydata_Crime.csv" with out missing values that may cause data gaps.
+Now we can analyze our preprocessed dataset "Tidydata_Crime.csv" with out missing values that may cause data gaps.
