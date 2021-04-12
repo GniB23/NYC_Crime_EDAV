@@ -1,1 +1,9 @@
 # Data transformation
+
+Fortunately, the downloaded data was available in csv format. As a result, loading in the data for analysis into R was largely straightforward. So we only apply certain transformations to the data for convenience for detailed analysis.
+
+First of all, since the smallest unit we focused on is county, we do not need the data from specific agencies. As the data has already contained "County Total" rows, we extracted these rows for future analysis.
+
+Secondly, as we mentioned in Chapter 2, many month values are not available. Since we only focus on the year level, we remove the month column from the dataset.
+
+Finally, we transform the data according to the specific question we want to explore. For example, when we want to connect the data to map data in order to draw a geographical heat map, we transfer the county names to lower case, for convenience of join to map_data. Also, for missing values essential for our analysis, we tried to add average values from the same county to ensure the completeness. These changes will be discusses in detail later. 

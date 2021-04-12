@@ -1,2 +1,16 @@
 # Data sources
 
+Our dataset was exported from the following link:
+
+[Index Crimes by County and Agency: Beginning 1990](https://data.ny.gov/Public-Safety/Index-Crimes-by-County-and-Agency-Beginning-1990/ca8h-8gjq)
+
+The data was posted on data.ny.gov. As mentioned on the website, The Division of Criminal Justice Services (DCJS) collects crime reports from more than 500 New York State police and sheriffs' departments. DCJS compiles these reports as New York's official crime statistics and submits them to the FBI under the National Uniform Crime Reporting (UCR) Program. UCR uses standard offense definitions to count crime in localities across America regardless of variations in crime laws from state to state. In New York State, law enforcement agencies use the UCR system to report their monthly crime totals to DCJS. The UCR reporting system collects information on seven crimes classified as Index offenses which are most commonly used to gauge overall crime volume. These include the violent crimes of murder/non-negligent manslaughter, forcible rape, robbery, and aggravated assault; and the property crimes of burglary, larceny, and motor vehicle theft. 
+
+The dataset has 15 columns and about 20.6k rows. Then columns includes county, agency, year(from 1990 to 2019), counts of total crimes, violent crimes and property crimes and their corresponding sub-types. There is also a column indicating whether the county belongs to New York City. Except for the three text columns(County, Agency and Region), all datatypes are numbers. For every county, there is one column where agency is 'County Total', and this means the sum of all agencies in this county. Since we take county data as the smallest research unit of this project, we only focus on these 'County Total' records.
+
+Although the dataset includes all the 62 counties in the state, there still exists problems:
+
+1) Not all agencies have complete reporting as indicated by the number of months reported ("Months reported" column). Due to a system conversion in 2002, number of months reported ("Months reported") is not available for any years prior to 2002. To solve this, we choose to ignore the month data and focus on year level.
+
+2) Some agencies became obsolete or were newly formed during the reporting period covered. Agencies may also experience reporting problems that can account for unusual changes in counts over time. Agencies may not have entries for each year due to incomplete reporting, no incidences of index crimes for a particular year or they were not an active agency in that year. Police agencies may experience reporting problems that preclude accurate or complete reporting. In a word, the counts represent only crimes reported to the police but not total crimes that occurred. Since it's really hard to get all the crime data that are not recorded or reported, we have to assume that the present data can represent the crime situation in New York.
+
