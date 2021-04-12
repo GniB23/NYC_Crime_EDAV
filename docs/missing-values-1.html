@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Missing values | EDAV on NY Crimes</title>
-  <meta name="description" content="Chapter 4 Missing values | EDAV on NY Crimes" />
+  <title>Chapter 5 Missing values | EDAV on NY Crimes</title>
+  <meta name="description" content="Chapter 5 Missing values | EDAV on NY Crimes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Missing values | EDAV on NY Crimes" />
+  <meta property="og:title" content="Chapter 5 Missing values | EDAV on NY Crimes" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Missing values | EDAV on NY Crimes" />
+  <meta name="twitter:title" content="Chapter 5 Missing values | EDAV on NY Crimes" />
   
   
   
@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="data-transformation.html"/>
+<link rel="prev" href="missing-values.html"/>
 <link rel="next" href="results.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -138,11 +138,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a></li>
 <li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a></li>
 <li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a></li>
-<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a></li>
-<li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a><ul>
-<li class="chapter" data-level="6.1" data-path="interactive-component.html"><a href="interactive-component.html#new-york-state-county-level-map"><i class="fa fa-check"></i><b>6.1</b> New York State County-level Map</a></li>
+<li class="chapter" data-level="5" data-path="missing-values-1.html"><a href="missing-values-1.html"><i class="fa fa-check"></i><b>5</b> Missing values</a></li>
+<li class="chapter" data-level="6" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>6</b> Results</a></li>
+<li class="chapter" data-level="7" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>7</b> Interactive component</a><ul>
+<li class="chapter" data-level="7.1" data-path="interactive-component.html"><a href="interactive-component.html#new-york-state-county-level-map"><i class="fa fa-check"></i><b>7.1</b> New York State County-level Map</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
+<li class="chapter" data-level="8" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>8</b> Conclusion</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -162,14 +163,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="missing-values" class="section level1">
-<h1><span class="header-section-number">Chapter 4</span> Missing values</h1>
+<div id="missing-values-1" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Missing values</h1>
 <p>Our data is downloaded directly from New York State Government website. Since collected by the Division of Criminal Justice Services(DCJS) from more than 500 New York State police and sheriffs’ departments from 1990 to 2019, the data suffers from various missing situations. For example, the precise month of some reports may be unclear due to long time range, and data from some police station may be fully missing in some years. We try to analyze patterns of the missing values, and to fill gaps to get tidy data for downstream tasks.</p>
 <p>First we can see the missing values in "Index_Crimes_by_County_and_Agency__Beginning_1990.csv" in Variable “Month.Reported” and other crime types:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="missing-values.html#cb1-1"></a>dataset &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Index_Crimes_by_County_and_Agency__Beginning_1990.csv&quot;</span>)</span>
-<span id="cb1-2"><a href="missing-values.html#cb1-2"></a><span class="kw">any</span>(<span class="kw">is.na</span>(dataset))</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="missing-values-1.html#cb1-1"></a>dataset &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Index_Crimes_by_County_and_Agency__Beginning_1990.csv&quot;</span>)</span>
+<span id="cb1-2"><a href="missing-values-1.html#cb1-2"></a><span class="kw">any</span>(<span class="kw">is.na</span>(dataset))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="missing-values.html#cb3-1"></a><span class="kw">colSums</span>(<span class="kw">is.na</span>(dataset)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sort</span>(<span class="dt">decreasing =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="missing-values-1.html#cb3-1"></a><span class="kw">colSums</span>(<span class="kw">is.na</span>(dataset)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sort</span>(<span class="dt">decreasing =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <pre><code>##     Months.Reported         Index.Total       Violent.Total              Murder 
 ##                9436                 384                 384                 384 
 ##                Rape             Robbery  Aggravated.Assault      Property.Total 
@@ -186,8 +187,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Finally, we use mean value of the county where “all records” missing happens in the same year to fill the second kind of missing values. Because the missing ratio of
 all records" is relatively small(about 1.5%) and the standard deviation of the same county in one year is also small, our filling process is making sense. Further, it’s very helpful for us to acquire tidy data for downstream data analysis. For the “months of reports” missing, we leave it in our tidy dataset since we don’t need this variable, and any filling to this missing is meaningless.</p>
 <p>We saved our tidy data in “Tidydata_Crime.csv”. Next checking the missing values in the filled dataset.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="missing-values.html#cb5-1"></a>tidy_dataset &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Tidydata_Crime.csv&quot;</span>)</span>
-<span id="cb5-2"><a href="missing-values.html#cb5-2"></a><span class="kw">any</span>(<span class="kw">is.na</span>(tidy_dataset<span class="op">$</span>Index.Total))</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="missing-values-1.html#cb5-1"></a>tidy_dataset &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Tidydata_Crime.csv&quot;</span>)</span>
+<span id="cb5-2"><a href="missing-values-1.html#cb5-2"></a><span class="kw">any</span>(<span class="kw">is.na</span>(tidy_dataset<span class="op">$</span>Index.Total))</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>Now we can analize our preprocessed dataset “Tidydata_Crime.csv” with out missing values that may cause data gaps.</p>
 
@@ -197,7 +198,7 @@ all records" is relatively small(about 1.5%) and the standard deviation of the s
           </div>
         </div>
       </div>
-<a href="data-transformation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="missing-values.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="results.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

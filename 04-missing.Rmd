@@ -1,1 +1,49 @@
 # Missing values
+```{r}
+library(dplyr)
+library(extracat)
+library(ggplot2)
+```
+
+Our data is downloaded directly from New York State Government website. Since collected by the Division of Criminal Justice Services(DCJS) from more than 500 New York State police and sheriffs' departments from 1990 to 2019, the data suffers from various missing situations. For example, the precise month of some reports may be unclear due to long time range, and data from some police station may be fully missing in some years. We try to analyze patterns of the missing values, and to fill gaps to get tidy data for downstream tasks. 
+
+First we can see the missing values in "Index_Crimes_by_County_and_Agency__Beginning_1990.csv" in Variable "Month.Reported" and other crime types:
+
+```{r, echo = TRUE}
+dataset <- read.csv("Index_Crimes_by_County_and_Agency__Beginning_1990.csv")
+any(is.na(dataset))
+colSums(is.na(dataset)) %>% sort(decreasing = TRUE)
+```
+
+Now we use Visna function to analyze patterns of the missing values:
+
+```{r}
+visna(dataset, sort="b")
+```
+
+In the Visna plot, missing values are categorized into two patterns. In majority cases, the months of reports are missing, while all crime reports would miss in minority cases, where we can only get information about the reported police station and year.
+
+Next we explored the correlation between variables and missing types. The "months of reports" missing distributes quite uniformly with respect to all variables including year, county, agency and region. Since variable Months.Reports is not used in our data analysis part, we are more interested in the other missing type where all records are missing. After analyzing relations between the "all records" missing and other variables, we find that this kind of missing only occurs in 2002 to 2007, which means it's highly correlated with virable year.
+
+```{r}
+datacheck <- dataset %>% select(Year, Index.Total) %>% mutate(missing=ifelse(is.na(Index.Total),1,0))
+datacheck_year <- datacheck %>% group_by(Year) %>% summarise(Missing_count=sum(missing))
+p_check_year <- ggplot(datacheck_year, aes(x=Year, y=Missing_count)) + 
+  geom_bar(stat='identity') +
+  xlab("Year") +
+  ylab("Number of missing values") +
+  ggtitle("Number of missing values by Year")
+p_check_year
+```
+
+Finally, we use mean value of the county where "all records" missing happens in the same year to fill the second kind of missing values. Because the missing ratio of 
+all records" is relatively small(about 1.5%) and the standard deviation of the same county in one year is also small, our filling process is making sense. Further, it's very helpful for us to acquire tidy data for downstream data analysis. For the "months of reports" missing, we leave it in our tidy dataset since we don't need this variable, and any filling to this missing is meaningless.
+
+We saved our tidy data in "Tidydata_Crime.csv". Next checking the missing values in the filled dataset.
+
+```{r, echo = TRUE}
+tidy_dataset <- read.csv("Tidydata_Crime.csv")
+any(is.na(tidy_dataset$Index.Total))
+```
+
+Now we can analize our preprocessed dataset "Tidydata_Crime.csv" with out missing values that may cause data gaps.
