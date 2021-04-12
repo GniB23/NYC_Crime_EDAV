@@ -5,7 +5,14 @@
 knitr::opts_chunk$set(echo = FALSE)
 library("tidyverse")
 library("dplyr")
+library(cowplot)
 library(ggplot2)
+library(ggpubr)
+library(forcats)
+library(maps)
+library(gridExtra)
+library(readr)
+library(viridis)
 
 ```
 
@@ -126,6 +133,9 @@ crime_county <- crime_index %>%
 write.csv(crime_county, file = "CRIME_COUNTY.csv")
 ```
 
+## Crime counts across the counties
+
+After gaining a general picture on the how state, we are now focusing on 
 
 
 

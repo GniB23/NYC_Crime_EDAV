@@ -4,6 +4,7 @@ data-transformation
 missing-values
 chapter-5
 general-picture-of-crimes-in-new-york-state
+crime-counts-across-the-counties
 interactive-component
 new-york-state-county-level-map
 conclusion
