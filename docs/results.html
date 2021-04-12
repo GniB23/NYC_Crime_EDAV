@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Results | YOUR TITLE HERE</title>
-  <meta name="description" content="Chapter 5 Results | YOUR TITLE HERE" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <title>Chapter 5 Results | EDAV on NYC Crimes</title>
+  <meta name="description" content="Chapter 5 Results | EDAV on NYC Crimes" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Results | YOUR TITLE HERE" />
+  <meta property="og:title" content="Chapter 5 Results | EDAV on NYC Crimes" />
   <meta property="og:type" content="book" />
   
   
@@ -16,15 +16,15 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Results | YOUR TITLE HERE" />
+  <meta name="twitter:title" content="Chapter 5 Results | EDAV on NYC Crimes" />
   
   
   
 
-<meta name="author" content="YOUR NAMES HERE" />
+<meta name="author" content="Ying Bi, Gaoge Liu, Hang Luo" />
 
 
-<meta name="date" content="2020-11-09" />
+<meta name="date" content="2021-04-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="missing-values.html"/>
 <link rel="next" href="interactive-component.html"/>
-<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,7 +51,6 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 
@@ -75,7 +74,10 @@
 <li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a></li>
 <li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a></li>
 <li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a></li>
-<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a></li>
+<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="results.html"><a href="results.html#trends-of-crimes-over-30-years"><i class="fa fa-check"></i><b>5.1</b> Trends of crimes over 30 years</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
 <li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
 <li class="divider"></li>
@@ -89,7 +91,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">YOUR TITLE HERE</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">EDAV on NYC Crimes</a>
           </h1>
         </div>
 
@@ -99,7 +101,22 @@
             <section class="normal" id="section-">
 <div id="results" class="section level1" number="5">
 <h1><span class="header-section-number">Chapter 5</span> Results</h1>
+<div id="trends-of-crimes-over-30-years" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Trends of crimes over 30 years</h2>
+<p>After analyzing features of crimes in recent years, we want to explorer the trend of numbers of crimes from 1990 to 2019, as well as the trend of different types of crimes.</p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>Plot 5.3.1 shows the general trend of number of crimes from 1990 to 2019. We can see crime cases reduced for about 100000 in last 30 years. It’s obvious the number of crimes is decreasing in general. And for the last 10 years of the 20th century, the number of cases dropped very rapid, with a slow drop continuing in next 20 years.</p>
+<p>We also fitted our data to a smooth curve in plot 5.3.2. The curve is similar to an exponential function, which means it has a large gradient in first few years and has the quality of decreasing continuously.</p>
+<p>Next we are interest in the time trend of all crime types in NY state in order to investigate which type of crime has caused the general decreasing. First we focus on two major types: violent crime and property crime.</p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>From plot 5.3.3, we can see that the number of property crimes reduced by about 300000 from 1990 to 2000, which contributes a major part to the rapid decreasing of crime number showed in plot 5.3.1 and 5.3.2.</p>
+<p>As a minority of crime types, violent crimes also showed large decreasing trend from 1994 with respect to its initial number in 1990. Now we can say the public safety situation improved a lot in the 1990s, which may be highly correlated to mayor Giuliani III’s policies, including increasing members in police station, and increasing investment in public safety. After 2000, these two major types of crimes both decreased slowly, which is consistent with the general trend.</p>
+<p>To further explorer the trends of all crimes, we darw the time series chart for all types of crimes as follows,</p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>Plot 5.3.4 shows the time trends for all types of crimes from 1990 to 2019. It tells us the numbers of larceny, burglary, motor/vehicle theft decreased rapidly. However, it’s difficult to acquire trends when the number of a variable is small such as murder and rape.</p>
+<p>To solve this problem, plot 5.3.5 provides index information about each type of crimes. Now small changes which may be difficult to examine can be find in plot 5.3.5. First, the numbers of all crime types decreased from 1990 to 2000, which is consistent with our analysis of plot 5.3.3. The largest number decreasing with respect to index is motor/vehicle theft, followed by muerder, burglary, aggravated assault and larceny. However, the number of rape cases started to oscillate after 2000, and even increased by a lot after 2013 while all other types decreased. Moreover, its trend is till going up in recent few years. It tells us though the public security situation seems to getting better, it’s still unsafe for women in New York compare with even 30 years ago. The reason behind increasing number of rape cases may reflect deeper social problems such as gender discriminate. We still need better policies to defend the rights of women in NY state.</p>
 
+</div>
 </div>
             </section>
 
