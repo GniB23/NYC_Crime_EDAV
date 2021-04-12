@@ -1,4 +1,4 @@
-# Chapter 5
+# Results
 ## General Picture of Crimes In New York State
 
 ```{r setup, include=FALSE}
